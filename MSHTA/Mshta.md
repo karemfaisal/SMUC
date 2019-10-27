@@ -195,5 +195,4 @@ Notes
 
 ### Reference 
 
-[Link 1]: http://blog.sevagas.com/?Hacking-around-HTA-files	"Good Resource about MSHTA"
-
+[Good Resource about MSHTA] http://blog.sevagas.com/?Hacking-around-HTA-files

@@ -15,14 +15,18 @@ We can use BITS task to download a file and run it after downloading and it will
 We can create BITS task using
 
 - bitsadmin.exe
+
 - BITS-Job in PowerShell
+
 - Windows API call 
 
+  
 
+[BITS creation]  http://0xthem.blogspot.com/2014/03/t-emporal-persistence-with-and-schtasks.html
 
-[BITS creation]: http://0xthem.blogspot.com/2014/03/t-emporal-persistence-with-and-schtasks.html	"Link 1"
-[BITS creation]: https://mgreen27.github.io/posts/2018/02/18/Sharing_my_BITS.html	"Link 2"
-[BITS creation]: https://github.com/3gstudent/bitsadminexec	"Link 3"
+[BITS creation2] https://mgreen27.github.io/posts/2018/02/18/Sharing_my_BITS.html 
+
+[BITS creation3] https://github.com/3gstudent/bitsadminexec 
 
 
 
@@ -63,9 +67,7 @@ We can create BITS task using
 
 Mathew Green wrote PowerShell script to extract suspicious URLs from from BITS-Client Events
 
-[Extract suspicious URLs ]: https://github.com/mgreen27/Invoke-BitsParser/blob/master/Invoke-BitsDetection.ps1	"PowerShell"
-
-
+[Extract suspicious URLs] https://github.com/mgreen27/Invoke-BitsParser/blob/master/Invoke-BitsDetection.ps1 
 
 
 
