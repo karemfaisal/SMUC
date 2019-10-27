@@ -2,7 +2,7 @@
 
 CHM files are help files in windows, just like the following
 
-![NormalCHM](https://raw.githubusercontent.com/karemfaisal/SMUC---Simplified-Mitre-Use-Cases/master/Compiled HTML Apllication\Misc\NormalCHM.jpg)
+![NormalCHM](https://raw.githubusercontent.com/karemfaisal/SMUC---Simplified-Mitre-Use-Cases/master/Compiled HTML Apllication/Misc/NormalCHM.jpg)
 
 this is the CHM file that came with process explorer from SysInternals, and like any windows based HTML files, it support *JS code* , so we can use JS to run PowerShell commands
 
@@ -47,7 +47,7 @@ a.Run(cmd,0);
 
 but what is not good that user got a displayed warning
 
-![ActiveXunsafe](https://raw.githubusercontent.com/karemfaisal/SMUC---Simplified-Mitre-Use-Cases/master/Compiled HTML Apllication\Misc\ActiveXunsafe.JPG)
+![ActiveXunsafe](https://raw.githubusercontent.com/karemfaisal/SMUC---Simplified-Mitre-Use-Cases/master/Compiled HTML Apllication/Misc/ActiveXunsafe.JPG)
 
 if user didn't click yes, the ActiveX object will not run, but also many error in chm will happen
 
@@ -96,10 +96,10 @@ C:\Program Files (x86)\HTML Help Workshop\hhc.exe' .\doc.hpp
     - cmd process with hh.exe as parent (if Jscript would fire cmd and PS)
     - PowerShell process with cmd as parent, the same cmd that has hh.exe as parent (if Jscript would fire cmd and PS)
 
-
-![Mermaid](https://raw.githubusercontent.com/karemfaisal/SMUC---Simplified-Mitre-Use-Cases/master/Compiled HTML Apllication\Misc\Mermaid.svg)
+![Mermaid](https://raw.githubusercontent.com/karemfaisal/SMUC---Simplified-Mitre-Use-Cases/master/Compiled%20HTML%20Apllication/Misc/Mermaid.jpg)
 
 
 ### Reference
 
-[Link 1]: https://gist.github.com/mgeeky/cce31c8602a144d8f2172a73d510e0e7	"cheat sheet"
+[Link1] https://gist.github.com/mgeeky/cce31c8602a144d8f2172a73d510e0e7  "cheat sheet"
+

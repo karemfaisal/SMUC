@@ -95,9 +95,8 @@ the following  XML is the XML created by the first PowerShell code
 
 
 
-![Mermaid](https://raw.githubusercontent.com/karemfaisal/SMUC---Simplified-Mitre-Use-Cases/master/Schedule Task/Misc/Mermaid.svg)
+![Mermaid](https://raw.githubusercontent.com/karemfaisal/SMUC---Simplified-Mitre-Use-Cases/master/Schedule Task/Misc/Mermaid.jpg)
 
 ### Reference
 
-[Link1]: https://www.robvanderwoude.com/schtasks.php	"schdtask Commands"
-
+[schdtask Commands] https://www.robvanderwoude.com/schtasks.php

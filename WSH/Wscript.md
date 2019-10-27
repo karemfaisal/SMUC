@@ -73,15 +73,11 @@ Payload written on disk: **WebDAV client local cache**
 
 
 
-![Mermaid](https://raw.githubusercontent.com/karemfaisal/SMUC---Simplified-Mitre-Use-Cases/master/Rundll32/Misc/Mermaid.svg)
+![Mermaid](https://raw.githubusercontent.com/karemfaisal/SMUC---Simplified-Mitre-Use-Cases/master/Rundll32/Misc/Mermaid.jpg)
 
 ### Reference
 
-[Link1]: https://ss64.com/vb	"Reference for VBscript"
+[Reference for VBScript] https://ss64.com/vb
 
-
-
-[Link2]: https://arno0x0x.wordpress.com/2017/11/20/windows-oneliners-to-download-remote-payload-and-execute-arbitrary-code/	"Many one Liners"
-
-
+[Many one Liners] https://arno0x0x.wordpress.com/2017/11/20/windows-oneliners-to-download-remote-payload-and-execute-arbitrary-code/ 
 

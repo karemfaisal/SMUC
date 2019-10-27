@@ -40,21 +40,7 @@ Microsoft provides many SSPs that SSPI handle them [Link](https://docs.microsoft
 
 Next Paragraph demonstrate the steps for authentication in Windows
 
-```mermaid
-graph LR
-A[Device2]--Authenticate-->B["Device1 | SSPI" ]
-B --"Pick" -->C[SSPs]
-C-->D[NTLMSSP]
-C-->E[Kerberos SSP]
-C-->F[CredSSP]
-C-->G[Wdigest SSP]
-C-->H[Negotiate SSP]
-H-->HD[NTLMSSP]
-H-->HE[Kerberos SSP]
-F-->FH[Negotiate SSP]
-FH-->TY[Kerberos SSP]
-FH-->TJ[NTLM SSP]
-```
+![Mermaid](https://raw.githubusercontent.com/karemfaisal/SMUC---Simplified-Mitre-Use-Cases/master/Mimikatz/Misc/Mermaid.jpg)
 
 Device 2 try to authenticate on Device 1, so SSPI check the protocol that Device2 offers to authenticate with.
 
@@ -335,23 +321,13 @@ Microsoft introduced two level of security to defend against Password Dumping
 
 ### References
 
-[Link1]: https://adsecurity.org/?page_id=1821	"Very informative blog about every part of mimikatz"
+ [Very informative blog about every part of mimikatz] https://adsecurity.org/?page_id=1821 
 
- 
+[Invoke-Mimikatz from PNG] https://pentestlab.blog/2018/01/02/command-and-control-images/ 
 
-[Link2]: https://pentestlab.blog/2018/01/02/command-and-control-images/	"Invoke-Mimikatz from PNG"
+[Many ways to dump LSASS] https://medium.com/@markmotig/some-ways-to-dump-lsass-exe-c4a75fdc49bf 
 
+[Mimikatz plugin for volatility] https://medium.com/@ali.bawazeeer/using-mimikatz-to-get-cleartext-password-from-offline-memory-dump-76ed09fd3330
 
-
-[Link3]: https://medium.com/@markmotig/some-ways-to-dump-lsass-exe-c4a75fdc49bf	"Many ways to dump LSASS"
-
-
-
-[Link4]: https://medium.com/@ali.bawazeeer/using-mimikatz-to-get-cleartext-password-from-offline-memory-dump-76ed09fd3330	"Mimikatz plugin for volatility"
-
-
-
-[Link5]: https://docs.microsoft.com/en-us/windows-server/security/windows-authentication/credentials-processes-in-windows-authentication	"Every thing about Credentials and Authentication Process "
-
-
+[Every thing about Credentials and Authentication Process ] https://docs.microsoft.com/en-us/windows-server/security/windows-authentication/credentials-processes-in-windows-authentication 
 

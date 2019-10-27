@@ -189,7 +189,7 @@ Notes
 
     
     
-    ![Mermaid](https://raw.githubusercontent.com/karemfaisal/SMUC---Simplified-Mitre-Use-Cases/master/MSHTA/Misc/Mermaid.svg)
+    ![Mermaid](https://raw.githubusercontent.com/karemfaisal/SMUC---Simplified-Mitre-Use-Cases/master/MSHTA/Misc/Mermaid.jpg)
     
     
 
