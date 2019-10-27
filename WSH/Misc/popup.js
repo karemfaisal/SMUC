@@ -1,0 +1,1 @@
+a = new ActiveXObject('Wscript.Shell');

