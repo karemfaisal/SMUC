@@ -184,33 +184,19 @@ to overcome this problem we can monitor creation for all streams and exclude Zon
 
 ### Reference
 
-[Link1]: https://www.varonis.com/blog/the-malware-hiding-in-your-windows-system32-folder-more-alternate-data-streams-and-rundll32/	"Tricks to run executables in ADS"
+[Tricks to run executables in ADS] https://www.varonis.com/blog/the-malware-hiding-in-your-windows-system32-folder-more-alternate-data-streams-and-rundll32/ 
 
+[Tricks to run executables in ADS] https://oddvar.moe/2018/01/14/putting-data-in-alternate-data-streams-and-how-to-execute-it/ 
 
+[Tricks to run executables in ADS Part-2] https://oddvar.moe/2018/04/11/putting-data-in-alternate-data-streams-and-how-to-execute-it-part-2/ 
 
-[Link2]: https://oddvar.moe/2018/01/14/putting-data-in-alternate-data-streams-and-how-to-execute-it/	"Tricks to run executables in ADS"
+[Check ADs Part]  https://www.andreafortuna.org/2017/10/11/some-thoughts-about-ntfs-filesystem/ 
 
+[Explanation for ADS] https://blog.malwarebytes.com/101/2015/07/introduction-to-alternate-data-streams/
 
+[Zone Identifier] https://cyberforensicator.com/2018/06/26/where-did-it-come-from-forensic-analysis-of-zone-identifier/ 
 
-[Link3]: https://oddvar.moe/2018/04/11/putting-data-in-alternate-data-streams-and-how-to-execute-it-part-2/	"Tricks to run executables in ADS Part-2"
+[a lot of Command for creating and executing ADS] https://gist.github.com/api0cradle/cdd2d0d0ec9abb686f0e89306e277b8f 
 
-
-
-[Link4]: https://www.andreafortuna.org/2017/10/11/some-thoughts-about-ntfs-filesystem/	"Check ADs Part"
-
-
-
-[Link5]: https://blog.malwarebytes.com/101/2015/07/introduction-to-alternate-data-streams/	"Explanation for ADS"
-
-
-
-[Link6]: https://cyberforensicator.com/2018/06/26/where-did-it-come-from-forensic-analysis-of-zone-identifier/	"Zone Identifier"
-
-
-
-[Link7]: https://gist.github.com/api0cradle/cdd2d0d0ec9abb686f0e89306e277b8f	"a lot of Command for creating and executing ADS"
-
-
-
-[Link 8]: https://github.com/enigma0x3/Invoke-AltDSBackdoor/blob/master/Invoke-ADSBackdoor.ps1	"Run shell code through ADS"
+[Run shell code through ADS] https://github.com/enigma0x3/Invoke-AltDSBackdoor/blob/master/Invoke-ADSBackdoor.ps1 
 
