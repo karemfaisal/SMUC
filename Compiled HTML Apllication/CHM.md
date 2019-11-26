@@ -2,7 +2,7 @@
 
 CHM files are help files in windows, just like the following
 
-![NormalCHM](https://raw.githubusercontent.com/karemfaisal/SMUC---Simplified-Mitre-Use-Cases/master/Compiled HTML Apllication/Misc/NormalCHM.jpg)
+![NormalCHM](https://raw.githubusercontent.com/karemfaisal/SMUC---Simplified-Mitre-Use-Cases/master/Compiled%20HTML%20Apllication/Misc/NormalCHM.jpg)
 
 this is the CHM file that came with process explorer from SysInternals, and like any windows based HTML files, it support *JS code* , so we can use JS to run PowerShell commands
 
@@ -47,7 +47,7 @@ a.Run(cmd,0);
 
 but what is not good that user got a displayed warning
 
-![ActiveXunsafe](https://raw.githubusercontent.com/karemfaisal/SMUC---Simplified-Mitre-Use-Cases/master/Compiled HTML Apllication/Misc/ActiveXunsafe.JPG)
+![ActiveXunsafe](https://raw.githubusercontent.com/karemfaisal/SMUC---Simplified-Mitre-Use-Cases/master/Compiled%20HTML%20Apllication/Misc/ActiveXunsafe.JPG)
 
 if user didn't click yes, the ActiveX object will not run, but also many error in chm will happen
 

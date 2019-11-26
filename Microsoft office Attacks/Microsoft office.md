@@ -71,7 +71,7 @@ End Sub
 
 
 
-![Mermaid2](https://raw.githubusercontent.com/karemfaisal/SMUC---Simplified-Mitre-Use-Cases/master/Microsoft office Attacks/Misc/Mermaid2.JPG)
+![Mermaid2](https://raw.githubusercontent.com/karemfaisal/SMUC---Simplified-Mitre-Use-Cases/master/Microsoft%20office%20Attacks/Misc/Mermaid2.JPG)
 
 
 
@@ -126,15 +126,15 @@ Open Word file and create formula
 
 
 
-![DDE1](https://raw.githubusercontent.com/karemfaisal/SMUC---Simplified-Mitre-Use-Cases/master/Microsoft office Attacks/Misc/DDE1.png)
+![DDE1](https://raw.githubusercontent.com/karemfaisal/SMUC---Simplified-Mitre-Use-Cases/master/Microsoft%20office%20Attacks/Misc/DDE1.png)
 
 
 
-![DDE2](https://raw.githubusercontent.com/karemfaisal/SMUC---Simplified-Mitre-Use-Cases/master/Microsoft office Attacks/Misc/DDE2.png)
+![DDE2](https://raw.githubusercontent.com/karemfaisal/SMUC---Simplified-Mitre-Use-Cases/master/Microsoft%20office%20Attacks/Misc/DDE2.png)
 
 
 
-![DDE3](https://raw.githubusercontent.com/karemfaisal/SMUC---Simplified-Mitre-Use-Cases/master/Microsoft office Attacks/Misc/DDE3.png)
+![DDE3](https://raw.githubusercontent.com/karemfaisal/SMUC---Simplified-Mitre-Use-Cases/master/Microsoft%20office%20Attacks/Misc/DDE3.png)
 
 when you Toggle Field Codes remove = \\* MERGEFORMAT and place the following
 
@@ -156,7 +156,7 @@ this will download ransomware from external IP and load it directly in the memor
     
     
 
-![DDEOAlert](https://raw.githubusercontent.com/karemfaisal/SMUC---Simplified-Mitre-Use-Cases/master/Microsoft office Attacks/Misc/DDEOAlert.jpg)
+![DDEOAlert](https://raw.githubusercontent.com/karemfaisal/SMUC---Simplified-Mitre-Use-Cases/master/Microsoft%20office%20Attacks/Misc/DDEOAlert.jpg)
 
 ---
 
@@ -171,11 +171,11 @@ Insert --> Object --> Package , Display ICON "choose ICON from WINWORD.exe" --> 
 
 
 
-![OLE](https://raw.githubusercontent.com/karemfaisal/SMUC---Simplified-Mitre-Use-Cases/master/Microsoft office Attacks/Misc/OLE.JPG)
+![OLE](https://raw.githubusercontent.com/karemfaisal/SMUC---Simplified-Mitre-Use-Cases/master/Microsoft%20office%20Attacks/Misc/OLE.JPG)
 
 
 
-![OLE2](https://raw.githubusercontent.com/karemfaisal/SMUC---Simplified-Mitre-Use-Cases/master/Microsoft office Attacks/Misc/OLE2.JPG)
+![OLE2](https://raw.githubusercontent.com/karemfaisal/SMUC---Simplified-Mitre-Use-Cases/master/Microsoft%20office%20Attacks/Misc/OLE2.JPG)
 
 OLE suffered from buffer overflow vulnerabilities that let attacker use it to deliver malwares, the good thing for attackers in this case that when OLE runs their malicious command buried inside the document, there is no "Enable content" button that use have to click on neither popup like in DDE "**CVE-2017-11882**" not working in Win 10 1809 and above
 
@@ -189,7 +189,7 @@ for OLE there is no Events and there is no registry key to search so I will talk
 
 
 
-![Mermaid](https://raw.githubusercontent.com/karemfaisal/SMUC---Simplified-Mitre-Use-Cases/master/Microsoft office Attacks/Misc/Mermaid.JPG)
+![Mermaid](https://raw.githubusercontent.com/karemfaisal/SMUC---Simplified-Mitre-Use-Cases/master/Microsoft%20office%20Attacks/Misc/Mermaid.JPG)
 
 
 

@@ -13,15 +13,7 @@ the main file in AutoCAD is DWG "drawing" file which contains the actual drawing
 - dwg loads **FAS files** which is compiled version of lsp, so attackers prefer it because it's not straight forward to malware analyst, the analyst has to decompile it first and there are few decompilers  
 - dwg loads **VLX files** which another format of compiled lsp files, and it has the same decompiling issue as FAS files, but more over it supports VBA, so it could be Dual attack
 
-
-```mermaid
-graph LR
-A[AutoLisP]-- Loaded by AutoCad-->B[Machine Langauge]
-B-- Loaded by DWG-->F
-D[FAS]-- Loaded by DWG-->F
-E[VLX]-- Loaded by DWG-->F
-F[DWG]-->C[AutoCad Engine]
-```
+![Mermaid](https://raw.githubusercontent.com/karemfaisal/SMUC---Simplified-Mitre-Use-Cases/master/AutoCAD/Misc/Mermaid.jpg)
 
 #### DWG Files
 
@@ -75,8 +67,6 @@ then open the FAS disassembler and drop the FAS file, the lsp file will be gener
 VLX is a compiled version of lsp files, it can contains VBA,DCL" Contains definitions of AutoCAD Dialog Boxes " and text
 
 it could be decompiled also using FAS decompiler V 0.9
-
-
 
 
 
