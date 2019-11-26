@@ -4,8 +4,9 @@ BITS is used for downloading and uploading in the background, one of its great f
 
  
 
-[BITS Documentation]: https://msdn.microsoft.com/en-us/ie/aa362813(v=vs.94)
-[BITS Admin]: https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/bitsadmin-examples
+[BITS Documentation] https://msdn.microsoft.com/en-us/ie/aa362813(v=vs.94)
+
+[BITS Admin] https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/bitsadmin-examples
 
 
 ### Attack
@@ -32,9 +33,8 @@ We can create BITS task using
 
 ### Detect
 
-- bitsadmin.exe
-
-  - sysmon 
+- **bitsadmin.exe**
+- sysmon 
   	 		- process create for bitsadmin.exe with cmd or PowerShell as parent process
 - process create for cmd or PowerShell with bitsadmin.exe in command line
   - Event viewer
@@ -44,7 +44,7 @@ We can create BITS task using
        - Microsoft-Bits as User Agent
   - qmgr[0-9].dat
        - before win 10 we could parse it using bits_parser, but in win 10 it's ESE database and could be viewed using ESEDatabaseViewer from Nirsoft
-- PowerShell start-BitsTransfer
+- **PowerShell start-BitsTransfer**
   - sysmon
     - process create for powershell with start-BitsTransfer  in the command line
   - Event Viewer
@@ -53,7 +53,7 @@ We can create BITS task using
     - Like Bitsadmin.exe
   - qmgr[0-9].dat
     - same as Bitsadmin.exe
-- Windows API
+- **Windows API**
   - Event Viewer
     - same as Bitsadmin.exe
   - NIDS
@@ -63,11 +63,13 @@ We can create BITS task using
 
 
 
+![Mermaid](https://raw.githubusercontent.com/karemfaisal/SMUC/master/BITS/Misc/Mermaid.JPG)
+
 
 
 Mathew Green wrote PowerShell script to extract suspicious URLs from from BITS-Client Events
 
-[Extract suspicious URLs] https://github.com/mgreen27/Invoke-BitsParser/blob/master/Invoke-BitsDetection.ps1 
+[Extract suspicious URLs](https://github.com/mgreen27/Invoke-BitsParser/blob/master/Invoke-BitsDetection.ps1) 
 
 
 

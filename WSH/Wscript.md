@@ -16,7 +16,6 @@ WSH supports
 
 - VBScript
 - JScript
-- VBA
 
 those scripting languages are like any languages, could be used to do solve some problem like any programming language or use in malicious way.
 

@@ -79,3 +79,8 @@ rundll32.exe javascript:"\..\mshtml,RunHTMLApplication ";new%20ActiveXObject("WS
 
 *this rule is just for demonstration, you shouldn't include on process create and Network connection  etc* 
 
+
+### Reference
+
+[Explain Rundll32 with JS](https://stackoverflow.com/questions/25131484/rundll32-exe-javascript)
+
