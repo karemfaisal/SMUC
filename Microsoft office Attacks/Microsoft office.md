@@ -81,6 +81,12 @@ We can't detect the running of macros, but we can detect the events that happene
 
 when user trust document or enable editing for it , there is values added to registry to let windows remember user's choice
 
+```powershell
+Computer\HKEY_CURRENT_USER\Software\Microsoft\Office\15.0\Word\Security\Trusted Documents\TrustRecords
+```
+
+*15.0 will vary depending on your installed office version*
+
 Data of this value may vary upon the permission
 
 - suffix FF FF FF 7F means enable macro
@@ -196,6 +202,7 @@ for OLE there is no Events and there is no registry key to search so I will talk
 - **sysmon**
   - Process Create
     - Parent process in the office path "Microsoft Office\Office", it contains WINWORD.exe,EXCEL.exe .etc
+      - this detection could be bypassed using Parent PID spoof
 ```xml
 <Sysmon schemaversion="4.00">
 <HashAlgorithms>md5,sha256,IMPHASH</HashAlgorithms>
@@ -208,6 +215,22 @@ for OLE there is no Events and there is no registry key to search so I will talk
 	</EventFiltering>
 </Sysmon>
 ```
+
+
+
+### Some Digital Forensics
+
+Many Incident Attack vector is Microsoft office, so we have to focus on finding office file that the user run
+
+in registry in this path
+
+`HKEY_CURRENT_USER\Software\Microsoft\Office\<Version>\Word\File MRU`MRU->"Most recent used"
+
+Place MRU  -> location of file 
+
+Security\Trusted
+
+
 
 
 
