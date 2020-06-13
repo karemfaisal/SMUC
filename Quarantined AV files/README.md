@@ -6,7 +6,7 @@ it's not about going to the quarantined path and pull the files then take it for
 
 Microsoft ATP indicate hundreds of alarms on many devices for a lot of files, it was like the entity is fully compromised, but when I took a sample from this files and I opened it, I found that it's not executable and actually it's garbage 
 
-![EncryptedFile](C:\Users\Noname\Desktop\L2 Work\Use Cases\SMUC\Quarentied AV files\Misc\EncryptedFile.JPG)
+![EncryptedFile](https://raw.githubusercontent.com/karemfaisal/SMUC---Simplified-Mitre-Use-Cases/master/Quarantined%20AV%20files/Misc/EncryptedFile.JPG)
 
 this file will never execute by itself, so I believed that this encrypted file will be loaded by another process then this file will be decrypted in memory and run
 
@@ -14,7 +14,7 @@ but now how can I decrypt it !, I don't know any thing except the security team 
 
 I used File Insight Hex editor for that
 
-![DecryptedFile](C:\Users\Noname\Desktop\L2 Work\Use Cases\SMUC\Quarentied AV files\Misc\DecryptedFile.JPG)
+![DecryptedFile](https://raw.githubusercontent.com/karemfaisal/SMUC---Simplified-Mitre-Use-Cases/master/Quarantined%20AV%20files/Misc/DecryptedFile.JPG)
 
 and here is ASCII characters, so now what is this file with VSBX magic header ? it is the magic header for quarantined files of trend micro and we can see the path of the file before being quarantined 
 `F:\System Volume Information\DFSR\Private\{C214EE99-BB13-4EC8-AB33-E0DD355598D8}-{48063213-07E7-499F-A6F8-068B1D4B80C3}\Installing\12-3-RE Inventorizat-{2E938AF9-6026-4F6D-8255-228F0D1F7E83}-v1261374.msg`
@@ -31,7 +31,7 @@ Trend.txt contains the path of the files I want to decrypt "the original files n
 
 When I run it I got the file and I could read it
 
-![Outlook](C:\Users\Noname\Desktop\L2 Work\Use Cases\SMUC\Quarentied AV files\Misc\Outlook.JPG)
+![Outlook](https://raw.githubusercontent.com/karemfaisal/SMUC---Simplified-Mitre-Use-Cases/master/Quarantined%20AV%20files/Misc/Outlook.JPG)
 
 
 There is another generic way to deal with quaeritated files from any Antivirus
