@@ -38,28 +38,41 @@ Copy-Item -Path C:\entry.txt -Destination c:\temp\entry.txt -ToSession $session
 
 Now the fun part, the Detection of execution of Remote Powershell
 
-```mermaid
-graph LR
-A[Host 192.168.1.6]-->B[Remote 192.168.1.12]
-```
+
+![mermaid](.\Misc\mermaid.PNG)
+
+
 
 #### Artifacts on Host
 
-- Windows Event Log
+- Microsoft-Windows-WinRM/Operational *"It's displayed in windows event explorer as 'Windows Remote Management'"*
 
-  - Microsoft-Windows-WinRM/Operational
-    - It's displayed in windows event explorer as 'Windows Remote Management'
-    - EID 6
-    ![WinRM-EID6](https://raw.githubusercontent.com/karemfaisal/SMUC/master/WinRM/Misc/WinRM-EID6.PNG)
+  - EID 6
     - it appears that we connect to 192.168.1.12 using WinRM 
-  - This Log Doesn't mean that the connection succeeded, but just record the trial
-  if there is not error log after it 
-    - EID 142 "WSMan operation CreateShell failed"
-    ![EID142](https://raw.githubusercontent.com/karemfaisal/SMUC/master/WinRM/Misc/EID142.PNG)
-    - EID 142 will be followed by EID 161 if Wsman is disabled on the remote server
-     ![WinRM-EID161](https://raw.githubusercontent.com/karemfaisal/SMUC/master/WinRM/Misc/WinRM-EID161.PNG)
-    - EID 142 will be followed by  EID 162 if Credentials is wrong
-     ![WinRM-EID162](https://raw.githubusercontent.com/karemfaisal/SMUC/master/WinRM/Misc/WinRM-EID162.PNG)
+
+    - This Log Doesn't mean that the connection succeeded, but just record the trial
+      if there is no error log after it then it's successful connection
+
+      
+
+      ![WinRM-EID6](https://raw.githubusercontent.com/karemfaisal/SMUC/master/WinRM/Misc/WinRM-EID6.PNG)
+    
+    
+    
+  -	EID 142 "WSMan operation CreateShell failed"
+        
+![EID142](https://raw.githubusercontent.com/karemfaisal/SMUC/master/WinRM/Misc/EID142.PNG)
+        
+        
+      
+  - EID 142 will be followed by EID 161 if Wsman is disabled on the remote server
+     
+![WinRM-EID161](https://raw.githubusercontent.com/karemfaisal/SMUC/master/WinRM/Misc/WinRM-EID161.PNG)
+     
+  - EID 142 will be followed by  EID 162 if Credentials is wrong
+     
+  ![WinRM-EID162](https://raw.githubusercontent.com/karemfaisal/SMUC/master/WinRM/Misc/WinRM-EID162.PNG)
+     
   - EID 16
     - Closing WSManshell
     - its date indicates the end of the connection
@@ -86,6 +99,7 @@ A[Host 192.168.1.6]-->B[Remote 192.168.1.12]
         ![WinRM-Remote-EID600](https://raw.githubusercontent.com/karemfaisal/SMUC/master/WinRM/Misc/Powershell-Remote-EID600.PNG)
 - WinRM 
   - EID 91 (Connection succeeded) *No thing new but it's still an evidence*
+   
    ![WinRM-Remote-EID91](https://raw.githubusercontent.com/karemfaisal/SMUC/master/WinRM/Misc/WinRM-Remote-EID91.PNG)
 - Security
   - EID 4624 Logon Type 3
