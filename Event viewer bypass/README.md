@@ -6,7 +6,7 @@
 
 ### EventLog service
 
-![PS_Query](.\Misc\PS_Query.PNG)
+![PS_Query](Misc/PS_Query.PNG)
 
 Service configuration:
 
@@ -30,11 +30,11 @@ Service configuration:
 
 104 for system
 
-![1102](.\Misc\1102.PNG)
+![1102](Misc/1102.PNG)
 
 
 
-![104](.\Misc\104.PNG)
+![104](Misc/104.PNG)
 
 
 
@@ -66,7 +66,7 @@ as we say the process responsible for logging is
 
 ```svchost -k LocalServiceNetworkRestricted -p -s eventlog```
 
-![LogProcess](.\Misc\LogProcess.PNG)
+![LogProcess](Misc/LogProcess.PNG)
 
 if we suspend this process, the event viewer will be paused, also you will not be able to open new CMD or PowerShell, but you can use the shell you already open.
 
@@ -125,7 +125,7 @@ as you see in the above image: Invoke phant0m find the PID for svchost responsib
 
 after killing the threads: **No log entries are logged**
 
-![TestPhant0m](.\Misc\TestPhant0m.gif)
+![TestPhant0m](Misc/TestPhant0m.gif)
 
 
 
@@ -135,11 +135,12 @@ after killing the threads: **No log entries are logged**
 
   - manual: it's very easy to recognize the code for Invoke-Phant0m if no obfuscation occurs 
 
-    - but of course attacker can also clear PowerShell logs
-  - if we have SIEM then it would 
-  
+    - but of course attacker can also clear PowerShell logs, if we have SIEM, then clearing logs locally on the victim device has no impact on logs on SIEM
+    
   - Automatic: we will catch any of the strings of the code
   
+    - I choosed this "*$ContextRecord.ContextFlags = 0x10003B*", you can choose whatever you want
+    
     ```yaml
     title: Detect Invoke-Phant0m
     id: 1f44f2ab-20bc-7234-93cc-d8ffbc93eadf
@@ -179,7 +180,7 @@ after killing the threads: **No log entries are logged**
 
     
 
-![TestPhant0m1](.\Misc\TestPhant0m1.gif)
+![TestPhant0m1](Misc/TestPhant0m1.gif)
 
 
 
@@ -203,10 +204,10 @@ after killing the threads: **No log entries are logged**
 
 this technique patch the service so it stops logging windows clear event (1102 , 104)
 
-Event Log service still logging all other logs
+***Event Log service still logging all other logs***
 following GIF shows that 1102 is no more generated but logs in PowerShell still be generated, the same as security events ..etc
 
-![TestMimi](.\Misc\TestMimi.gif)
+![TestMimi](Misc/TestMimi.gif)
 
 
 
@@ -222,47 +223,48 @@ First of all if SIEM exists, then clearing logs is not important, we always can 
 
       - correlate PID of svchost with PIDs of process creation in SIEM if it's svchost of event log
 
-      ![ProcessAccess](.\Misc\ProcessAccess.PNG)
-	
+      - Process Access: x1438 which is
 
-	- Module Loading (Detect Mimikatz not necessary to be event::drop)
-	
-	
-	    - bcryptprimitives.dll
-	    - vaultsvc.dll
-	    - all DLLs for SSPs like [schannel.dll, credssp.dll, gpapi.dll, wdigest.dll, tspkg.dll, samsrv.dll]
-	    - *If the process loaded all the modules in sysmon then it's highly likely to be mimikatz, but if only one or two modules then it's could be regular process*
-	
-	  ```xml
-	  <Sysmon schemaversion="4.00">
-	  <HashAlgorithms>md5,sha256,IMPHASH</HashAlgorithms>
-	    <EventFiltering>
-	  		<ProcessAccess onmatch="include">
-	  			<TargetImage condition="is">C:\Windows\System32\svchost.exe</TargetImage>
-	  		</ProcessAccess>
-	  		
-	  		
-	  		<ImageLoad onmatch="include"> 
-	  			<ImageLoaded condition="contains">schannel.dll</ImageLoaded>
-	              <ImageLoaded condition="contains">credssp.dll</ImageLoaded>
-	              <ImageLoaded condition="contains">gpapi.dll</ImageLoaded>
-	              <ImageLoaded condition="contains">wdigest.dll</ImageLoaded>
-	              <ImageLoaded condition="contains">tspkg.dll</ImageLoaded>
-	  			<ImageLoaded condition="contains">samsrv.dll</ImageLoaded>
-	  		</ImageLoad>
-	  		
-	  		
-	  	</EventFiltering>
-	  </Sysmon>
-	  ```
-	
-- Process Access: x1438 which is
+        **PROCESS_SUSPEND_RESUME** (0x800) | **PROCESS_SET_INFORMATION** (0x200) | **PROCESS_QUERY_INFORMATION** (0x400) | **PROCESS_VM_WRITE** (0x20) | **PROCESS_VM_READ** (0x10)  | **PROCESS_VM_OPERATION** (0x8)
 
-  - **PROCESS_SUSPEND_RESUME** (0x800) | **PROCESS_SET_INFORMATION** (0x200) | **PROCESS_QUERY_INFORMATION** (0x400) | **PROCESS_VM_WRITE** (0x20) | **PROCESS_VM_READ** (0x10)  | **PROCESS_VM_OPERATION** (0x8)
+        Which is sufficient access to do the patching
 
-    Which is sufficient access to do the patching
+      ![ProcessAccess](Misc/ProcessAccess.PNG)
+    
+    - Module Loading (Detect Mimikatz not necessary to be event::drop)
+  
+      - bcryptprimitives.dll
+  
+      - vaultsvc.dll
+  
+      - all DLLs for SSPs like [schannel.dll, credssp.dll, gpapi.dll, wdigest.dll, tspkg.dll, samsrv.dll]
+  
+      - *If the process loaded all the modules in sysmon then it's highly likely to be mimikatz, but if only one or two modules then it's could be regular process*
+  
+        ```xml
+        <Sysmon schemaversion="4.00">
+        <HashAlgorithms>md5,sha256,IMPHASH</HashAlgorithms>
+          <EventFiltering>
+        		<ProcessAccess onmatch="include">
+        			<TargetImage condition="is">C:\Windows\System32\svchost.exe</TargetImage>
+        		</ProcessAccess>
+        		
+        		
+        		<ImageLoad onmatch="include"> 
+        			<ImageLoaded condition="contains">schannel.dll</ImageLoaded>
+                    <ImageLoaded condition="contains">credssp.dll</ImageLoaded>
+                    <ImageLoaded condition="contains">gpapi.dll</ImageLoaded>
+                    <ImageLoaded condition="contains">wdigest.dll</ImageLoaded>
+                    <ImageLoaded condition="contains">tspkg.dll</ImageLoaded>
+        			<ImageLoaded condition="contains">samsrv.dll</ImageLoaded>
+        		</ImageLoad>
+        		
+        		
+        	</EventFiltering>
+        </Sysmon>
+        ```
+
+  
 
 ***Patching svchost in on run time on disk, so restarting the service or computer will remove the effect of mimikatz***
-
-
 
