@@ -109,4 +109,4 @@ Output: We got list of all event IDs related to each user, from that we found `t
 
 4634 -- An account was logged off.
 
-<img src="/Users/khanafeer/work/blue/SMUC/Password Spray/Misc/s_res.png" alt="s_res" style="zoom:50%;" />
+<img src="Misc/s_res.png" alt="s_res" style="zoom:50%;" />
