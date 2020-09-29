@@ -70,9 +70,10 @@ From the previous command we will get the correct `USER%PASSWORD`  `test_user%sp
 
 To detect such a technique, We have to monitor windows login faliures for specific event IDs.
 
-- **4625** - Domain Controllers: "Audit Logon" (Success & Failure)
-- **4771** - Domain Controllers: "Audit Kerberos Authentication Service" (Success & Failure)
-- **4648** - All systems: "Audit Logon" (Success & Failure) 
+- Windows Security Events **(WinEventLog:Security)**
+  - **4625** - Domain Controllers: "Audit Logon" (Success & Failure)
+  - **4771** - Domain Controllers: "Audit Kerberos Authentication Service" (Success & Failure)
+  - **4648** - All systems: "Audit Logon" (Success & Failure) 
 
 **(1 source_ip)** has multiple login faluires**(event_id=4625)** against **(3 user_name)** at short time period **(10Min)**
 
